@@ -15,7 +15,7 @@ playerTurn = True
 red = color_rgb(255, 0, 0)
 black = color_rgb(0, 0, 0)
 
-win = GraphWin("My Circle", width, height)
+win = GraphWin("Scuffed Connect Four", width, height)
 win.setBackground(color_rgb(59, 59, 59))
 space = 80
 scoreOne = 0
