@@ -14,6 +14,7 @@ gameRound = True
 playerTurn = True
 red = color_rgb(255, 0, 0)
 black = color_rgb(0, 0, 0)
+counter = 0
 
 win = GraphWin("Scuffed Connect Four", width, height)
 win.setBackground(color_rgb(59, 59, 59))
@@ -240,23 +241,37 @@ def roundWin(player):
 
 
 def test():
-    global playerTurn
+    global playerTurn, counter
 
     while(game==True):
         if(playerTurn == True):
             playerOne()
             playerTurn = False
+            counter+=1
         elif (playerTurn == False):
             playerTwo()
             playerTurn = True
+            counter+=1
+
+        if counter == 42:
+            message.setText(("That's a draw!"))
+            messageTwo = Text(Point(width / 2, yPosOne - 30), "Press any key twice to restart")
+            messageTwo.setSize(15)
+            messageTwo.setTextColor(color_rgb(255, 255, 255))
+            messageTwo.draw(win)
+            win.getKey()
+            win.getKey()
+            messageTwo.undraw()
+            reset()
 
 def reset():
-    global playerTurn, board, boardRep, game
+    global playerTurn, board, boardRep, game, counter
     win.delete("all")
     game==False
     playerTurn = True
     boardRep = [[0] * 6 for x in range(7)]
     game == True
+    counter = 0
     boardDisplay()
 
     test()
