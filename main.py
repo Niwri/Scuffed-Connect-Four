@@ -240,7 +240,7 @@ def roundWin(player):
     reset()
 
 
-def test():
+def running():
     global playerTurn, counter
 
     while(game==True):
@@ -273,14 +273,13 @@ def reset():
     game == True
     counter = 0
     boardDisplay()
-
-    test()
+    running()
 
 
 if __name__ == '__main__':
     try:
         boardDisplay()
-        test()
+        running()
     except:
         print("Ok")
 
